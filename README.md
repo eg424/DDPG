@@ -1,7 +1,7 @@
 
-# Deep Deterministic Policy Gradient (DDPG) for Healthcare
+# Deep Deterministic Policy Gradient for Healthcare
 
-This repository contains an implementation of the Deep Deterministic Policy Gradient (DDPG) algorithm, showcasing its potential applications in healthcare. The DDPG is a reinforcement learning algorithm suitable for continuous action spaces, and in this example, it's used to optimize decision-making tasks in healthcare.
+This repository contains an implementation of the DDPG algorithm applied to the "Pendulum-v1" environment from the Gymnasium library. DDPG is an actor-critic, model-free, off-policy algorithm used for reinforcement learning tasks, particularly advantageous in those involving continuous action spaces.
 
 ## Requirements
 
@@ -37,34 +37,52 @@ pip install -r requirements.txt
 3. Run the code:
 
 ```bash
-python <your_script_name>.py
+python DDPG_Pendulum.py
 ```
 
-The code will perform a task using the DDPG algorithm and demonstrate how AI can be applied to healthcare decision-making problems.
+The script will train a DDPG agent to balance the Pendulum-v1 environment and display a performance comparison between using a target network and not using a target network.
+
+## Code Overview
+
+### Key Components
+
+1. **DDPG Algorithm**: 
+   - **Actor Network**: Learns the policy (what action to take given a state).
+   - **Critic Network**: Evaluates the action taken by the actor based on the state.
+   - **Replay Buffer**: Stores past experiences (state, action, reward, next state) for training.
+   - **Ornstein-Uhlenbeck Noise**: Added to actions for exploration.
+
+2. **Hyperparameters**:
+   - `gamma`: Discount factor for future rewards.
+   - `tau`: Soft update coefficient for target networks.
+   - `critic_lr`: Learning rate for the critic network.
+   - `actor_lr`: Learning rate for the actor network.
+   - `total_episodes`: Number of episodes for training.
+
+3. **Training Process**:
+   - The agent interacts with the Pendulum environment, records experiences, and learns by optimizing both the actor and critic networks.
+   - The target networks are slowly updated using the soft update method.
+
+4. **Visualizations**:
+   - The performance of the agent is plotted, showing its average episodic reward with and without the target network.
 
 ## How It Works
 
-### Code Overview
+### Training Loop
 
-- **Main Algorithm**: This script implements the Deep Deterministic Policy Gradient (DDPG) algorithm.
-- **Healthcare Environment**: The environment simulates healthcare-related tasks for training the agent.
-- **Policy Network**: The neural network model used for decision-making.
-- **Training Loop**: The agent interacts with the environment, learns from the outcomes, and optimizes the policy over time.
+1. **Initialization**: The environment is created, and the actor, critic, and target networks are initialized.
+2. **Action Selection**: The agent selects actions using the actor network, adding noise for exploration.
+3. **Experience Replay**: The agent stores its experiences in the buffer and learns from them in batches.
+4. **Target Network Update**: The target networks (actor' and critic') are updated after each episode using a soft update.
+5. **Evaluation**: The agent's performance is tracked, and rewards are averaged over recent episodes for smoother plots.
 
-## Notes
+### Example Output
 
-- This implementation uses [insert framework here: TensorFlow, PyTorch, etc.], which is necessary for running the code.
-- Make sure you adjust the parameters as per the problem you're solving in healthcare.
+![download (5)](https://github.com/user-attachments/assets/332b6eb6-97c6-4318-a4a7-0cd377ed2f94)
+![download (4)](https://github.com/user-attachments/assets/2620bfb4-a4b2-4c75-bb07-0423872b1caa)
+
 
 ## Authors
 
-- [Your Name](https://www.linkedin.com/in/your-linkedin)
-- [Link to the tutorial or article on Medium](https://medium.com/@eg424/deep-deterministic-policy-gradient-how-can-ai-be-used-in-healthcare-13ed7ca64ce3)
-
-## License
-
-[Insert License Information]
-
----
-
-Feel free to adjust the instructions according to your specific code.
+- Erik Garcia Oyono (www.linkedin.com/in/erik-garcia-oyono)
+- **Deep Deterministic Policy Gradient**: *How can AI be used in healthcare?* Exploring the power of DDPG in biomedical applications (https://medium.com/@eg424/deep-deterministic-policy-gradient-how-can-ai-be-used-in-healthcare-13ed7ca64ce3)
