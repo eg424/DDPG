@@ -85,4 +85,4 @@ The script will train a DDPG agent to balance the Pendulum-v1 environment and di
 ## Authors
 
 - Erik Garcia Oyono (www.linkedin.com/in/erik-garcia-oyono)
-- **Deep Deterministic Policy Gradient**: *How can AI be used in healthcare?* Exploring the power of DDPG in biomedical applications (https://medium.com/@eg424/deep-deterministic-policy-gradient-how-can-ai-be-used-in-healthcare-13ed7ca64ce3)
+- **Deep Deterministic Policy Gradient**: *How can AI be used in healthcare?* (https://medium.com/@eg424/deep-deterministic-policy-gradient-how-can-ai-be-used-in-healthcare-13ed7ca64ce3)
