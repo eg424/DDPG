@@ -1,10 +1,6 @@
 def update_target(target, source, tau):
     """
     Soft-update target network parameters.
-    
-    :param target: Target network.
-    :param source: Source network.
-    :param tau: Update factor (0 < tau < 1).
     """
     target_weights = target.get_weights()
     source_weights = source.get_weights()
