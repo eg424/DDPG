@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ```bash
 git clone <https://github.com/eg424/DDPG.git>
-cd <ddpg_pendulum.py>
+cd <DDPG.py>
 ```
 
 2. Install the dependencies listed in `requirements.txt`:
