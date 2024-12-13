@@ -1,0 +1,28 @@
+import os
+import numpy as np
+import tensorflow as tf
+
+def save_model(actor_model, critic_model, directory="saved_models"):
+    """
+    Saves the actor and critic models.
+    """
+    if not os.path.exists(directory):
+        os.makedirs(directory)
+    actor_model.save(os.path.join(directory, "actor_model.pth"))
+    critic_model.save(os.path.join(directory, "critic_model.pth"))
+    print(f"Models saved in {directory}")
+
+def generate_frames(env, model, noise, num_steps=100):
+    """
+    Generates frames for visualizing agent performance.
+    """
+    frames = []
+    state, _ = env.reset()
+    for _ in range(num_steps):
+        tf_state = tf.expand_dims(tf.convert_to_tensor(state), 0)
+        action = model(tf_state)
+        state, _, done, truncated, _ = env.step(action)
+        frames.append(env.render())
+        if done or truncated:
+            break
+    return frames
