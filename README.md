@@ -11,7 +11,9 @@ Ensure that you have the following dependencies installed:
 - `tensorflow`
 - `numpy`
 - `matplotlib`
-- Any additional libraries
+- 'gymnasium'
+- 'imageio'
+- Any additional libraries listed in 'requirements.txt'
 
 You can install the dependencies using `pip`:
 
@@ -25,6 +27,7 @@ pip install -r requirements.txt
 
 ```bash
 git clone <https://github.com/eg424/DDPG-Pendulum.git>
+cd DDPG-Pendulum
 ```
 
 2. Install the dependencies listed in `requirements.txt`:
@@ -33,13 +36,21 @@ git clone <https://github.com/eg424/DDPG-Pendulum.git>
 pip install -r requirements.txt
 ```
 
-3. Run the code:
+3. Run the code to train the agent:
 
 ```bash
-python DDPG_Pendulum.py
+python main.py
 ```
 
 The script will train a DDPG agent to balance the Pendulum-v1 environment and display a performance comparison between using a target network and not using a target network.
+
+4. Test the trained agent:
+
+Use 'test.py' to evaluate the trained models:
+
+```bash
+python test.py
+```
 
 ## Code Overview
 
@@ -51,19 +62,23 @@ The script will train a DDPG agent to balance the Pendulum-v1 environment and di
    - **Replay Buffer**: Stores past experiences (state, action, reward, next state) for training.
    - **Ornstein-Uhlenbeck Noise**: Added to actions for exploration.
 
-2. **Hyperparameters**:
+2. **Files**:
+   - main.py: Trains the DDPG agent and saves trained models.
+   - test.py: Evaluates the trained agent and generates a performance GIF.
+   - utils/ddpg_agent.py: Implements the DDPGAgent class, encapsulating training logic.
+   - utils/actor_critic.py: Contains actor and critic network definitions.
+   - utils/noise.py: Implements the Ornstein-Uhlenbeck noise process.
+   - utils/replay_buffer.py: Manages the replay buffer for experience storage and sampling.
+   - utils/target_update.py: Implements the target network soft-update logic.
+   - utils/helper_functions.py: Helper functions for saving models, plotting rewards, and      generating GIFs.
+   - ddpg_pendulum.py: A self-contained script demonstrating the full implementation.
+   
+3. **Hyperparameters**:
    - `gamma`: Discount factor for future rewards.
    - `tau`: Soft update coefficient for target networks.
    - `critic_lr`: Learning rate for the critic network.
    - `actor_lr`: Learning rate for the actor network.
    - `total_episodes`: Number of episodes for training.
-
-3. **Training Process**:
-   - The agent interacts with the Pendulum environment, records experiences, and learns by optimizing both the actor and critic networks.
-   - The target networks are slowly updated using the soft update method.
-
-4. **Visualizations**:
-   - The performance of the agent is plotted, showing its average episodic reward with and without the target network.
 
 ## How It Works
 
@@ -75,10 +90,18 @@ The script will train a DDPG agent to balance the Pendulum-v1 environment and di
 4. **Target Network Update**: The target networks (actor' and critic') are updated after each episode using a soft update.
 5. **Evaluation**: The agent's performance is tracked, and rewards are averaged over recent episodes for smoother plots.
 
+### Testing
+1. **Load Models**: The trained actor model is loaded from the saved_models/ directory.
+2. **Generate GIF**: The trained agent is evaluated in the environment. A sequence of frames is recorded and saved as a GIF in the gifs/ directory.
+   
 ### Example Output
+**Learning Curves**:
+The agent's average episodic reward over training episodes, comparing performance with and without target networks.
+![download (6)](https://github.com/user-attachments/assets/b500efde-8843-49c7-9c45-d52ff39ace6d)
 
-![download (5)](https://github.com/user-attachments/assets/332b6eb6-97c6-4318-a4a7-0cd377ed2f94)
-![download (4)](https://github.com/user-attachments/assets/2620bfb4-a4b2-4c75-bb07-0423872b1caa)
+**GIF of Agent Performance**:
+A GIF showcasing the trained agent balancing the pendulum.
+![pendulum_solved](https://github.com/user-attachments/assets/e089a839-39ca-4c4a-8687-609d4cebd3d7)
 
 
 ## Authors
