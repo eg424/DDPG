@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ```bash
 git clone <https://github.com/eg424/DDPG.git>
-cd <DDPG.py>
+cd <DDPG>
 ```
 
 2. Install the dependencies listed in `requirements.txt`:
