@@ -8,7 +8,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Environment Setup
-env = gym.make("Pendulum-v1", render_mode="human")
+env = gym.make("Pendulum-v1", render_mode="rgb_array")
 num_states = env.observation_space.shape[0]
 num_actions = env.action_space.shape[0]
 upper_bound = env.action_space.high[0]
