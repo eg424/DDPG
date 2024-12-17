@@ -39,7 +39,7 @@ pip install -r requirements.txt
 3. Run the code to train the agent:
 
 ```bash
-python main.py
+python3 main.py
 ```
 
 The script will train a DDPG agent to balance the Pendulum-v1 environment and display a performance comparison between using a target network and not using a target network.
