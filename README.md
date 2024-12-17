@@ -11,9 +11,9 @@ Ensure that you have the following dependencies installed:
 - `tensorflow`
 - `numpy`
 - `matplotlib`
-- 'gymnasium'
-- 'imageio'
-- Any additional libraries listed in 'requirements.txt'
+- `gymnasium`
+- `imageio`
+- Any additional libraries listed in `requirements.txt`
 
 You can install the dependencies using `pip`:
 
@@ -46,7 +46,7 @@ The script will train a DDPG agent to balance the Pendulum-v1 environment and di
 
 4. Test the trained agent:
 
-Use 'test.py' to evaluate the trained models:
+Use `test.py` to evaluate the trained models:
 
 ```bash
 python test.py
