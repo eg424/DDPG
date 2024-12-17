@@ -3,7 +3,7 @@ import tensorflow as tf
 from utils.actor_critic import get_actor, get_critic
 from utils.replay_buffer import Buffer
 from utils.target_update import update_target
-from utils.noise import OUActionNoise
+from utils.OUnoise import OUActionNoise
 
 
 class DDPGAgent:
